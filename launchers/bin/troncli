@@ -1,0 +1,13 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+jarfile="${DIR}/troncli.jar"
+
+if [ -z ${JAVA_HOME+x} ]; then
+    javabin=java
+else
+    javabin="${JAVA_HOME}/bin/java"
+fi
+
+"${javabin}" -jar "${jarfile}" --full grpc.trongrid.io:50051 $*
